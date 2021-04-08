@@ -8,4 +8,5 @@ router.post('/registro',JugadorController.postRegistroJugador);
 
 //Obtiene los datos del usuario cuando inicia sesion
 router.post('/iniciarSesion',JugadorController.postIniciarSesion);
+
 module.exports = router;

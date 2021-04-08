@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 
 //Conexión con la base de datos
-const sequelize = new Sequelize('RetoDB', 'sa', 'Password1234$', {
+const sequelize = new Sequelize('juego', 'sa', 'Password1234$', {
     dialect: 'mssql',
     dialectOptions: {
         options: {

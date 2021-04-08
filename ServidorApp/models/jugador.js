@@ -15,15 +15,27 @@ const Jugador = sequelize.define('jugador',{
     },
     genero:{
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: 'Genero',
+            key: 'idGenero'
+        }
     },
     lugarResidencia:{
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: 'Estado',
+            key: 'idEstado'
+        }
     },
     escolaridad:{
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: 'Escolaridad',
+            key: 'idEscolaridad'
+        }
     },
     correo:{
         type: Sequelize.STRING(100),

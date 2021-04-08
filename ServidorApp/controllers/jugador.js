@@ -13,7 +13,11 @@ exports.postRegistroJugador = (req,res)=>{
     Jugador.create({
         nombreUsuario: object.nombreUsuario,
         clave: object.clave,
+        genero: object.genero,
+        lugarResidencia: object.lugarResidencia,
+        escolaridad: object.escolaridad,
         correo: object.correo,
+        fechaNac: object.fechaNac,
         fechaRegistro: today.toString()
     }).then(resultado=>{
         res.send("Registro exitoso")
