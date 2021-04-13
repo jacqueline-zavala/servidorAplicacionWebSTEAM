@@ -2,31 +2,32 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Jugadas = sequelize.define('jugadas',{
-    clave_minijuego:{
-        type: Sequelize.INTEGER,
+const Jugadas = sequelize.define('Jugadas',{
+    minijuego:{
+        type: Sequelize.STRING(30),
         allownull: false,
         primaryKey: true,
-        references:{
-            model: 'Minijuego',
-            key: 'clave'
-        }
     },
-    clave_partida: {
+    idPartida: {
         type: Sequelize.INTEGER,
         allownull: false,
         primaryKey: true,
         references: {
             model: 'Partida',
-            key: 'clave'
+            key: 'idPartida'
         }
     },
-    tiempoInvertido: {
-        type: Sequelize.TIME,
-        
+    fechaInicio: {
+        type: Sequelize.DATE,
+        allownull: false
+    },
+    fechaFinal: {
+        type: Sequelize.DATE,
+        allownull: true
     },
     puntaje: {
         type: Sequelize.INTEGER,
+        allownull: false
     }
 
 });

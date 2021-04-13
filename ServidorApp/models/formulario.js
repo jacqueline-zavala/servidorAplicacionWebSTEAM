@@ -2,45 +2,46 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Partida = sequelize.define('Partida',{
-    idPartida:{
+const Formulario = sequelize.define('Formulario',{
+    idFormulario:{
         type: Sequelize.INTEGER,
         allownull: false,
         primaryKey: true
     },
     username: {
         type: Sequelize.STRING(50),
+        allownull: false,
         references: {
             model: 'Jugador',
             key: 'username'
         }
     },
-    puntuacionAcumulada: {
+    carreraInteresInicial: {
+        type: Sequelize.STRING(30),
+        allownull: false
+        
+    },
+    familiarIngeniero: {
         type: Sequelize.INTEGER,
+        allownull: false
+    },
+    sabesSTEAM: {
+        type: Sequelize.TEXT,
+        allownull: false
+    },
+    estudiarIngenieria: {
+        type: Sequelize.INTEGER,
+        allownull: false
+    },
+    minijuegoFavorito: {
+        type: Sequelize.STRING(30),
         allownull: true
     },
-    vidas: {
-        type: Sequelize.INTEGER,
-        allownull: false
-    },
-    estatus: {
-        type: Sequelize.STRING(15),
-        allownull: false
-    },
-    fechaInicio:{
-        type: Sequelize.DATE,
-        allownull: false
-
-    },
-    fechaFinal:{
-        type: Sequelize.DATE,
+    carreraInteresFinal: {
+        type: Sequelize.STRING(30),
         allownull: true
-
-    },
-    inventario:{
-        type: Sequelize.INTEGER,
-        allownull: false
     }
+
 });
 
-module.exports = Partida;
+module.exports = Formulario;

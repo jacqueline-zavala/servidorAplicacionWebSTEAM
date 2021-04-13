@@ -3,54 +3,43 @@ const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
 //Definicion del modelo (tabla)
-const Jugador = sequelize.define('jugador',{
-    nombreUsuario:{
-        type: Sequelize.STRING(15),
+const Jugador = sequelize.define('Jugador',{
+    username:{
+        type: Sequelize.STRING(50),
         allowNull: false,
         primaryKey: true
     },
-    clave:{
-        type: Sequelize.STRING(20),
+    password:{
+        type: Sequelize.STRING(50),
         allowNull: false
     },
     genero:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(20),
         allowNull: false,
-        references: {
-            model: 'Genero',
-            key: 'idGenero'
-        }
     },
-    lugarResidencia:{
-        type: Sequelize.INTEGER,
+    estadoResidencia:{
+        type: Sequelize.STRING(50),
         allowNull: false,
-        references: {
-            model: 'Estado',
-            key: 'idEstado'
-        }
+    },
+    paisResidencia:{
+        type: Sequelize.STRING(50),
+        allowNull: false,
     },
     escolaridad:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(50),
         allowNull: false,
-        references: {
-            model: 'Escolaridad',
-            key: 'idEscolaridad'
-        }
     },
     correo:{
         type: Sequelize.STRING(100),
         allowNull: false,
-        primaryKey: false
     },
-    fechaNac:{
+    fechaNacimiento:{
         type: Sequelize.DATEONLY,
         allowNull: false,
-        primaryKey: false
     },
     fechaRegistro:{
         type: Sequelize.DATEONLY,
         allowNull: false,
-        primaryKey: false
     }
 });
 

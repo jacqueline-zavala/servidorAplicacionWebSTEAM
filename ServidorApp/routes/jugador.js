@@ -9,4 +9,7 @@ router.post('/registro',JugadorController.postRegistroJugador);
 //Obtiene los datos del usuario cuando inicia sesion
 router.post('/iniciarSesion',JugadorController.postIniciarSesion);
 
+// Redirigir a la página de confirmación
+router.get('/confirmacion', JugadorController.getConfirmacion);
+
 module.exports = router;
