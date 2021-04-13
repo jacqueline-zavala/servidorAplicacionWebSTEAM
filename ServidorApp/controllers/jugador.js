@@ -8,9 +8,8 @@ exports.postRegistroJugador = (req,res)=>{
     //console.log(req.body.datosJSON)
     //Crea un nuevo objeto JSON con el cuerpo datosJSON proviniente del form de Unity
     //var object = JSON.parse(req.body.datosJSON);
-    
     var object = req.body;
-    console.log(object)
+    //console.log(object)
     //Se crea el registro
     Jugador.create({
         username: object.username,
@@ -23,16 +22,23 @@ exports.postRegistroJugador = (req,res)=>{
         fechaNacimiento: object.fechaNacimiento,
         fechaRegistro: today.toString()
     }).then(resultado=>{
-        res.redirect("/Jugador/confirmacion");
+        var redirectString = "/formulario/registro?username=" + object.username + "&carreraInteresInicial=" + object.carreraInteresInicial + "&familiarIngeniero=" + object.familiarIngeniero + "&sabesSTEAM=" + object.sabesSTEAM + "&estudiarIngeniero=" + object.estudiarIngenieria
+        res.redirect(redirectString);
+        //res.redirect("/jugador/confirmacion");
+        //:username/:carreraInteresInicial/:familiarIngeniero
+        ///:sabesSTEAM/:estudiarIngenieria/:minijuegoFavorito/:carreraInteresFinal
         })
       .catch(error=>{
           res.send(error);
         });
 };
-
 // Muestra la página de confirmación
 exports.getConfirmacion = (req,res)=>{
-    res.sendFile('../views/confirmacion.html');
+    res.sendFile(path.join(__dirname,'..','views','confirmacion.html'));
+}
+// Muestra la página de confirmación
+exports.getFormularioRegistro = (req,res)=>{
+    res.sendFile(path.join(__dirname,'..','views','registro.html'));
 }
 
 //Comprueba que el usuario y contraseña del jugadorsean correctos

@@ -12,6 +12,8 @@ const sequelize = require('./util/database');
 
 //Traer las rutas de usuario
 const jugadorRoutes = require('./routes/jugador')
+//Traer las rutas de formulario
+const formularioRoutes = require('./routes/formulario')
 
 //Crear el servidor
 const app = express();
@@ -31,6 +33,8 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 //Trae las rutas de Jugador
 app.use('/jugador',jugadorRoutes)
+//Trae las rutas de Jugador
+app.use('/formulario',formularioRoutes)
 
 //puerto
 let puerto=8080;

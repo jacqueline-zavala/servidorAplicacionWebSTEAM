@@ -15,15 +15,15 @@ const Jugador = sequelize.define('Jugador',{
     },
     genero:{
         type: Sequelize.STRING(20),
-        allowNull: false,
+        allowNull: true, //cambiar despues de asesoria
     },
     estadoResidencia:{
         type: Sequelize.STRING(50),
-        allowNull: false,
+        allowNull: true, //cambiar despues de asesoria
     },
     paisResidencia:{
         type: Sequelize.STRING(50),
-        allowNull: false,
+        allowNull: true, //cambiar despues de asesoria
     },
     escolaridad:{
         type: Sequelize.STRING(50),
