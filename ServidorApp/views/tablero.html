@@ -31,14 +31,13 @@
 					<!--Inicio de la cabeza de la tabla-->
 					<tr>
 						<!--Inicio de los índices de la tabla-->
-						<th scope="col">ID</th>
 						<th scope="col">Nombre de usuario</th>
-						<th scope="col">Carrera de interés</th>
-						<th scope="col">Familiar ingeniero</th>
-						<th scope="col">¿Sabes sobre STEAM?</th>
-						<th scope="col">Estudiar ingeniería</th>
-						<th scope="col">Minijuego favorito</th>
-						<th scope="col">Estudiar ingeniería final</th>
+						<th scope="col">Género</th>
+						<th scope="col">Estado de residencia</th>
+						<th scope="col">Escolaridad</th>
+						<th scope="col">Correo</th>
+						<th scope="col">Fecha de nacimiento</th>
+						<th scope="col">Fecha de registro</th>
 					</tr>
 					<!--Final de los índices de la tabla-->
 				</thead>
@@ -46,10 +45,31 @@
 
 				<tbody id="tab_reg">
 					<!--Inicio de registros de la tabla-->
-					<th>
-
-					</th>
-					
+					<%jugadores.forEach((jugador) => {%>
+						<tr>
+							<th>
+								<%=jugador.username%>
+							</th>
+							<th>
+								<%=jugador.genero%>
+							</th>
+							<th>
+								<%=jugador.estadoResidencia%>
+							</th>
+							<th>
+								<%=jugador.escolaridad%>
+							</th>
+							<th>
+								<%=jugador.correo%>
+							</th>
+							<th>
+								<%=jugador.fechaNacimiento%>
+							</th>
+							<th>
+								<%=jugador.fechaRegistro%>
+							</th>
+						</tr>
+					<%});%>					
 				</tbody>
 				<!--Fin de los registros de la tabla-->
 			</table>

@@ -34,7 +34,6 @@ exports.postRegistroJugador = (req,res)=>{
 exports.getConfirmacion = (req,res)=>{
     Jugador.findByPk(req.query.username)
     .then(resultado => {
-        console.log(resultado.dataValues)
         res.render('confirmacion.html', {
             username: resultado.dataValues.username,
             password: resultado.dataValues.password,
@@ -78,3 +77,14 @@ exports.postIniciarSesion = (req,res)=>{
         
     });
 };
+
+exports.getRegistros = (req, res) => {
+    Jugador.findAll()
+    .then(registros => {
+        var datos = [];
+        registros.forEach(registro => {
+            datos.push(registro.dataValues);
+        });
+        res.render('tablero.html', {jugadores: datos});
+    });
+}
