@@ -1,6 +1,7 @@
 //Obtiene el modelo del jugador
 const Jugador = require('../models/jugador');
 const path = require('path');
+const sequelize = require('../util/database');
 
 //Registra el jugador desde un JSON
 exports.postRegistroJugador = (req,res)=>{
@@ -16,7 +17,6 @@ exports.postRegistroJugador = (req,res)=>{
         password: object.password,
         genero: object.genero,
         estadoResidencia: object.estadoResidencia,
-        paisResidencia: object.paisResidencia,
         escolaridad: object.escolaridad,
         correo: object.correo,
         fechaNacimiento: object.fechaNacimiento,
@@ -24,7 +24,7 @@ exports.postRegistroJugador = (req,res)=>{
     }).then(resultado=>{
         //var redirectString = "/formulario/registro?username=" + object.username + "&carreraInteresInicial=" + object.carreraInteresInicial + "&familiarIngeniero=" + object.familiarIngeniero + "&sabesSTEAM=" + object.sabesSTEAM + "&estudiarIngeniero=" + object.estudiarIngenieria
         //res.redirect(redirectString);
-        res.redirect("/jugador/confirmacion");
+        res.redirect("/jugador/confirmacion?username=" + object.username);
         })
       .catch(error=>{
           res.send(error);
@@ -32,7 +32,19 @@ exports.postRegistroJugador = (req,res)=>{
 };
 // Muestra la página de confirmación
 exports.getConfirmacion = (req,res)=>{
-    res.sendFile(path.join(__dirname,'..','views','confirmacion.html'));
+    Jugador.findByPk(req.query.username)
+    .then(resultado => {
+        res.render('confirmacion.html', {
+        username: resultado.username,
+        password: resultado.password,
+        genero: resultado.genero,
+        estadoResidencia: resultado.estadoResidencia,
+        escolaridad: resultado.escolaridad,
+        correo: resultado.correo,
+        fechaNacimiento: resultado.fechaNacimiento,
+        fechaRegistro: resultado.fechaRegistro
+        })
+    });
 }
 // Muestra la página de confirmación
 exports.getFormularioRegistro = (req,res)=>{

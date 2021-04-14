@@ -21,10 +21,6 @@ const Jugador = sequelize.define('Jugador',{
         type: Sequelize.STRING(50),
         allowNull: true, //cambiar despues de asesoria
     },
-    paisResidencia:{
-        type: Sequelize.STRING(50),
-        allowNull: true, //cambiar despues de asesoria
-    },
     escolaridad:{
         type: Sequelize.STRING(50),
         allowNull: false,
