@@ -3,6 +3,6 @@ const router = express.Router();
 //Trae los controladores dle jugador
 const formularioController = require('../controllers/formulario')
 
-router.get('/registro/:username&:carreraInteresInicial&:familiarIngeniero&:sabesSTEAM&:estudiarIngenieria&:minijuegoFavorito&:carreraInteresFinal');
+router.get('/registro',formularioController.getRegistroFormulario);
 
 module.exports = router;

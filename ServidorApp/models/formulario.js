@@ -6,7 +6,8 @@ const Formulario = sequelize.define('Formulario',{
     idFormulario:{
         type: Sequelize.INTEGER,
         allownull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     username: {
         type: Sequelize.STRING(50),

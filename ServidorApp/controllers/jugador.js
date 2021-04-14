@@ -22,11 +22,9 @@ exports.postRegistroJugador = (req,res)=>{
         fechaNacimiento: object.fechaNacimiento,
         fechaRegistro: today.toString()
     }).then(resultado=>{
-        var redirectString = "/formulario/registro?username=" + object.username + "&carreraInteresInicial=" + object.carreraInteresInicial + "&familiarIngeniero=" + object.familiarIngeniero + "&sabesSTEAM=" + object.sabesSTEAM + "&estudiarIngeniero=" + object.estudiarIngenieria
-        res.redirect(redirectString);
-        //res.redirect("/jugador/confirmacion");
-        //:username/:carreraInteresInicial/:familiarIngeniero
-        ///:sabesSTEAM/:estudiarIngenieria/:minijuegoFavorito/:carreraInteresFinal
+        //var redirectString = "/formulario/registro?username=" + object.username + "&carreraInteresInicial=" + object.carreraInteresInicial + "&familiarIngeniero=" + object.familiarIngeniero + "&sabesSTEAM=" + object.sabesSTEAM + "&estudiarIngeniero=" + object.estudiarIngenieria
+        //res.redirect(redirectString);
+        res.redirect("/jugador/confirmacion");
         })
       .catch(error=>{
           res.send(error);
