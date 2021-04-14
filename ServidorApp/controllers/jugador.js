@@ -34,15 +34,16 @@ exports.postRegistroJugador = (req,res)=>{
 exports.getConfirmacion = (req,res)=>{
     Jugador.findByPk(req.query.username)
     .then(resultado => {
+        console.log(resultado.dataValues)
         res.render('confirmacion.html', {
-        username: resultado.username,
-        password: resultado.password,
-        genero: resultado.genero,
-        estadoResidencia: resultado.estadoResidencia,
-        escolaridad: resultado.escolaridad,
-        correo: resultado.correo,
-        fechaNacimiento: resultado.fechaNacimiento,
-        fechaRegistro: resultado.fechaRegistro
+            username: resultado.dataValues.username,
+            password: resultado.dataValues.password,
+            genero: resultado.dataValues.genero,
+            estadoResidencia: resultado.dataValues.estadoResidencia,
+            escolaridad: resultado.dataValues.escolaridad,
+            correo: resultado.dataValues.correo,
+            fechaNacimiento: resultado.dataValues.fechaNacimiento,
+            fechaRegistro: resultado.dataValues.fechaRegistro
         })
     });
 }
