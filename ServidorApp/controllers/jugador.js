@@ -1,13 +1,15 @@
 const path = require('path');
 const Jugador = require('../util/database').models.Jugador;
-
+const { encrypt, decrypt } = require('../util/crypto');
 //Registra el jugador desde un JSON
 exports.postRegistroJugador = (req,res)=>{
-    var object = req.body;
+    var object = req.body
+    var hashedPassword = encrypt(object.password);
+    var pass = hashedPassword.iv+ '|' + hashedPassword.content
     //Se crea el registro
     Jugador.create({
         username: object.username,
-        password: object.password,
+        password: pass,//object.password,
         genero: object.genero,
         estadoResidencia: object.estadoResidencia,
         escolaridad: object.escolaridad,
@@ -18,7 +20,8 @@ exports.postRegistroJugador = (req,res)=>{
         res.redirect(url);
         })
       .catch(error=>{
-          res.send(error);
+          //res.send(error);
+          res.redirect("formularioRegistro")
         });
 };
 
@@ -26,9 +29,13 @@ exports.postRegistroJugador = (req,res)=>{
 exports.getConfirmacion = (req,res)=>{
     Jugador.findByPk(req.query.username)
     .then(resultado => {
+        var jsonDecrypt = {
+            iv: resultado.password.split('|')[0],
+            content: resultado.password.split('|')[1]
+        };
         res.render('confirmacion.html', {
             username: resultado.dataValues.username,
-            password: resultado.dataValues.password,
+            password: decrypt(jsonDecrypt),//resultado.dataValues.password,
             genero: resultado.dataValues.genero,
             estadoResidencia: resultado.dataValues.estadoResidencia,
             escolaridad: resultado.dataValues.escolaridad,
@@ -54,4 +61,18 @@ exports.getRegistros = (req, res) => {
         });
         res.render('tablero.html', {jugadores: datos});
     });
+}
+
+exports.postIniciarSesion = (req,res) => {
+    Jugador.findByPk(req.body.username)
+        .then(jugador => {
+            var hashedPassword = encrypt(req.body.password);
+            var pass = hashedPassword.iv+ '|' + hashedPassword.content
+            if(jugador.username == req.body.username && jugador.password == pass){
+                res.send('success');
+            }
+            else{
+                res.send('failed');
+            }
+        })
 }

@@ -1,5 +1,4 @@
 const Formulario = require('../util/database').models.Formulario;
-
 const path = require('path');
 
 // Se envía la información del registro a la entidad formulario
@@ -11,7 +10,6 @@ exports.getRegistroFormulario = (req,res)=>{
         sabesSTEAM: req.query.sabesSTEAM,
         estudiarIngenieria: req.query.estudiarIngenieria,
     }).then(resultado=>{
-    console.log(req.query);
     res.redirect("/jugador/confirmacion?username=" + req.query.username);
     }).catch(error=>{
         console.log(error);
