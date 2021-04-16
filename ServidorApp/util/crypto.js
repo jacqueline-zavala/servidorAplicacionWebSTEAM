@@ -1,8 +1,13 @@
+//modulo crypto para encriptar
 const crypto = require('crypto');
+//definimos el algoritmo de encriptacion a usar
 const algorithm = 'aes-256-ctr';
+//definimos la llave privada para encriptar y desencriptar
 const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
+//definimos iv
 const iv = crypto.randomBytes(16);
 
+//Funcion que encripta un texto dado
 const encrypt = (text) => {
 
     const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
@@ -14,7 +19,7 @@ const encrypt = (text) => {
         content: encrypted.toString('hex')
     };
 };
-
+//funcion que devuelve el texto que estaba encriptado
 const decrypt = (hash) => {
 
     const decipher = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(hash.iv, 'hex'));
