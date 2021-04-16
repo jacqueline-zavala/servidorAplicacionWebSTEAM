@@ -1,7 +1,9 @@
-//Obtiene el modelo del jugador
+//Se obtiene el modelo del formulario
 const Formulario = require('../models/formulario');
+
 const path = require('path');
 
+// Se envía la información del registro a la entidad formulario
 exports.getRegistroFormulario = (req,res)=>{
     Formulario.create({
         username: req.query.username,

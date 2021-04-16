@@ -1,38 +1,49 @@
 //Biblioteca para definir lo que es un JSON
 const bodyParser = require("body-parser");
+
 //Biblioteca para generar las rutas de acuerdo al sistema operativo
-const path = require("path")
+const path = require("path");
+
 //Importar la biblioteca express para la creación de servidores
 const express = require('express');
+
 //Traer la conexión de la base de datos
 const sequelize = require('./util/database');
+
 //Traer las rutas de usuario
-const jugadorRoutes = require('./routes/jugador')
+const jugadorRoutes = require('./routes/jugador');
+
 //Traer las rutas de formulario
-const formularioRoutes = require('./routes/formulario')
+const formularioRoutes = require('./routes/formulario');
+
 //Crear el servidor
 const app = express();
+
 //Establecer un middleware para configura la ubicación de nuestros elementos públicos
 app.use(express.static(path.join(__dirname,'public')));
+
 //Middleware para configura la definicion de un JSON
 app.use(bodyParser.json());
+
 //Middleware para configurar la recepción de formularios
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({extended:true}));
+
 //Configurar visualización de plantills
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','ejs');
+
 //Configurar visualización de plantills
 // app.engine('html', require('ejs').renderFile);
 // app.set('view engine','ejs');
 
 //Trae las rutas de Jugador
-app.use('/jugador',jugadorRoutes)
+app.use('/jugador',jugadorRoutes);
+
 //Trae las rutas de Jugador
-app.use('/formulario',formularioRoutes)
+app.use('/formulario',formularioRoutes);
 
 //puerto
 let puerto=8080;
-
 
 //Corre el servidor
 sequelize.sync()

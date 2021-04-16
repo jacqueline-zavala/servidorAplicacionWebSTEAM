@@ -1,7 +1,10 @@
+// Importando el módulo para realizar la conexión con la base de datos
 const Sequelize = require('sequelize');
 
+// Importando la conexión de la base de datos
 const sequelize = require('../util/database');
 
+// Definir el modelo de la entidad Formulario
 const Formulario = sequelize.define('Formulario',{
     idFormulario:{
         type: Sequelize.INTEGER,
@@ -45,4 +48,5 @@ const Formulario = sequelize.define('Formulario',{
 
 });
 
+// Exportamos el modelo
 module.exports = Formulario;

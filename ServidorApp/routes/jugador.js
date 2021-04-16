@@ -1,21 +1,23 @@
+// Se importa el módulo express
 const express = require('express');
+
+// Se declara un objeto de tipo router
 const router = express.Router();
-//Trae los controladores dle jugador
+
+//Trae los controladores del jugador
 const JugadorController = require('../controllers/jugador');
-const Jugador = require('../models/jugador');
 
 //Registra un nuevo usuario en la base de datos desde el juego
 router.post('/registro', JugadorController.postRegistroJugador);
 
 //Muestra el html de formulario de registro
-router.get('/formularioRegistro',JugadorController.getFormularioRegistro);
-
-//Obtiene los datos del usuario cuando inicia sesion
-router.post('/iniciarSesion',JugadorController.postIniciarSesion);
+router.get('/formularioRegistro', JugadorController.getFormularioRegistro);
 
 // Redirigir a la página de confirmación
 router.get('/confirmacion', JugadorController.getConfirmacion);
 
+// Obtiene los registros del jugador para desplegarlos en el tablero
 router.get('/tablero', JugadorController.getRegistros);
 
+// Se exporta el router
 module.exports = router;

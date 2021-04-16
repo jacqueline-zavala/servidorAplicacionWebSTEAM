@@ -1,8 +1,10 @@
+// Importando el módulo para realizar la conexión con la base de datos
 const Sequelize = require('sequelize');
+
 //Traer el objeto sequelize 
 const sequelize = require('../util/database');
 
-//Definicion del modelo (tabla)
+// Definir el modelo de la entidad Jugador
 const Jugador = sequelize.define('Jugador',{
     username:{
         type: Sequelize.STRING(50),
@@ -39,4 +41,5 @@ const Jugador = sequelize.define('Jugador',{
     }
 });
 
+// Exportamos el modelo
 module.exports = Jugador;
