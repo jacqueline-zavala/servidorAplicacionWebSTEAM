@@ -1,14 +1,8 @@
-//Obtiene el modelo del jugador
-const Jugador = require('../models/jugador');
-
 const path = require('path');
-
-// Se obtiene el objeto de conexión a base de datos
-const sequelize = require('../util/database');
+const Jugador = require('../util/database').models.Jugador;
 
 //Registra el jugador desde un JSON
 exports.postRegistroJugador = (req,res)=>{
-    var today = new Date();
     var object = req.body;
     //Se crea el registro
     Jugador.create({
@@ -19,9 +13,9 @@ exports.postRegistroJugador = (req,res)=>{
         escolaridad: object.escolaridad,
         correo: object.correo,
         fechaNacimiento: object.fechaNacimiento,
-        fechaRegistro: today.toString()
     }).then(resultado=>{
-        res.redirect("/jugador/confirmacion?username=" + object.username);
+        var url = "/formulario/registro?username=" + object.username + "&carreraInteresInicial=" + object.carreraInteresInicial + "&familiarIngeniero=" + object.familiarIngeniero + "&sabesSTEAM=" + object.sabesSTEAM + "&estudiarIngenieria=" + object.estudiarIngenieria;
+        res.redirect(url);
         })
       .catch(error=>{
           res.send(error);

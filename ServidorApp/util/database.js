@@ -1,6 +1,6 @@
 //Configuración de Sequelize
 const Sequelize = require('sequelize');
-
+const {applyRelations} = require('./relations');
 //Conexión con la base de datos
 const sequelize = new Sequelize('retoDB', 'sa', 'Password1234$', {
     dialect: 'mssql',
@@ -20,7 +20,22 @@ const sequelize = new Sequelize('retoDB', 'sa', 'Password1234$', {
 Sequelize.DATE.prototype._stringify = function _stringify(date, options) {
     date = this._applyTimezone(date, options);
     return date.format('YYYY-MM-DD HH:mm:ss.SSS');
-  };
+};
 
+//Cargar los modelos
+const modelDefiners = [
+    require('../models/jugador'),
+    require('../models/formulario'),
+    require('../models/jugadas'),
+    require('../models/partida'),
+
+]
+//Vincular el objeto de conexion a los modelos
+for(const modelDefiner of modelDefiners){
+    modelDefiner(sequelize);
+}
+
+//construir relaciones
+applyRelations(sequelize);
 //Exportando el objeto sequelize
 module.exports = sequelize;

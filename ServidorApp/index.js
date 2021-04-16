@@ -1,15 +1,11 @@
 //Biblioteca para definir lo que es un JSON
 const bodyParser = require("body-parser");
-
 //Biblioteca para generar las rutas de acuerdo al sistema operativo
 const path = require("path");
-
 //Importar la biblioteca express para la creación de servidores
 const express = require('express');
-
 //Traer la conexión de la base de datos
 const sequelize = require('./util/database');
-
 //Traer las rutas de usuario
 const jugadorRoutes = require('./routes/jugador');
 
