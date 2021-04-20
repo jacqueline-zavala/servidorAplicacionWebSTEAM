@@ -6,7 +6,7 @@ const Jugadas = (sequelize)=>{
         minijuego:{
             type: Sequelize.STRING(30),
             allownull: false,
-            primaryKey: true,
+            primaryKey: true
         },
         fechaInicio: {
             type: Sequelize.DATE,
