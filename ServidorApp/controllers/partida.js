@@ -11,4 +11,3 @@ exports.getRegistroFormulario = (req,res)=>{
         console.log(error);
         res.send("error")
     });
-};
