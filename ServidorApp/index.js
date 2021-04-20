@@ -12,40 +12,44 @@ const jugadorRoutes = require('./routes/jugador');
 //Traer las rutas de formulario
 const formularioRoutes = require('./routes/formulario');
 
+const partidaRoutes = require('./routes/partida');
+
 //Crear el servidor
 const app = express();
 
 //Establecer un middleware para configura la ubicación de nuestros elementos públicos
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Middleware para configura la definicion de un JSON
 app.use(bodyParser.json());
 
 //Middleware para configurar la recepción de formularios
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Configurar visualización de plantills
 app.engine('html', require('ejs').renderFile);
-app.set('view engine','ejs');
+app.set('view engine', 'ejs');
 
 //Configurar visualización de plantills
 // app.engine('html', require('ejs').renderFile);
 // app.set('view engine','ejs');
 
 //Trae las rutas de Jugador
-app.use('/jugador',jugadorRoutes);
+app.use('/jugador', jugadorRoutes);
 
 //Trae las rutas de Jugador
-app.use('/formulario',formularioRoutes);
+app.use('/formulario', formularioRoutes);
+
+app.use('/partida', partidaRoutes);
 
 //puerto
-let puerto=8080;
+let puerto = 8080;
 
 //Corre el servidor
 sequelize.sync()
-    .then(resultado=>{
+    .then(resultado => {
         console.log('Conexión exitosa');
         //Lanza el servidor para escuchar peticiones
-        app.listen(puerto,()=>console.log("Servidor en línea en el puerto 8080"));
+        app.listen(puerto, () => console.log("Servidor en línea en el puerto 8080"));
     })
-    .catch(error=>console.log(error));
+    .catch(error => console.log(error));
