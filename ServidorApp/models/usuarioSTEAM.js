@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 // Definir el modelo de la entidad Jugadas
 const STEAM = (sequelize)=>{
-    sequelize.define('Partida',{
+    sequelize.define('STEAM',{
         correoElectronico:{
             type: Sequelize.STRING(30),
             allownull: false,
@@ -20,7 +20,7 @@ const STEAM = (sequelize)=>{
             type: Sequelize.STRING(50),
             allownull: false
         },
-        apellidoMaterno: {
+        apellidoPaterno: {
             type: Sequelize.STRING(50),
             allownull: false
         },
