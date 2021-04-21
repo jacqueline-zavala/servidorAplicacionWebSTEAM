@@ -1,14 +1,14 @@
-//Se importa el módulo express
+// Se importa el módulo express
 const express = require('express');
 
 // Se declara un objeto de tipo router
 const router = express.Router();
 
 //Trae los controladores del jugador
-const PartidaController = require('../controllers/partida');
+const usuarioSTEAMController = require('../controllers/usuarioSTEAM');
 
 //Registra un nuevo usuario en la base de datos desde el juego
-router.post('/agregarPartida', PartidaController.postCrearNuevaPartida);
+router.post('/agreagarUsuarioSteam', UsuarioSteamController.postCrearNuevoUsuarioSTEAM);
 
 
 // Se exporta el router

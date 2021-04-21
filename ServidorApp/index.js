@@ -18,6 +18,9 @@ const formularioRoutes = require('./routes/formulario');
 
 const partidaRoutes = require('./routes/partida');
 
+//Traer las rutas de usuarioSTEAM
+const usuaeioSTEAMRoutes = require('./routes/usuarioSTEAM');
+
 // Traer las rutas de jugadas
 const jugadasRoutes = require('./routes/jugadas');
 
@@ -48,6 +51,10 @@ app.use('/jugador', jugadorRoutes);
 app.use('/formulario', formularioRoutes);
 
 app.use('/partida', partidaRoutes);
+
+//Traae las rutas de usuarioSTEAM
+app.use('/usuarioSTEAM', usuarioSTEAMRoutes);
+
 
 // Trae las rutas de Jugadas
 app.use('/jugadas', jugadasRoutes);
