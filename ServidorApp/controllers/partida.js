@@ -6,10 +6,10 @@ const Partida = require('../util/database').models.Partida;
 exports.postCrearNuevaPartida = (req, res) => {
     var object = req.body
     Partida.create({
-        puntuacionAcumulada: object.puntuacionAcumulada,
-        vidas: object.vidas,
-        estatus: object.estatus,
-        inventario: object.inventario,
+        // puntuacionAcumulada: object.puntuacionAcumulada,
+        // vidas: object.vidas,
+        // estatus: object.estatus,
+        // inventario: object.inventario,
         JugadorUsername: object.JugadorUsername
     }).then(resultado => {
         res.send({ idPartida: resultado.dataValues.idPartida }) //Enviar de regreso al juego la idPartida
