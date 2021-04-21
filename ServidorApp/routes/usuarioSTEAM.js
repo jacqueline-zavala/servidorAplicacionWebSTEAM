@@ -8,7 +8,7 @@ const router = express.Router();
 const usuarioSTEAMController = require('../controllers/usuarioSTEAM');
 
 //Registra un nuevo usuario en la base de datos desde el juego
-router.post('/agreagarUsuarioSteam', UsuarioSteamController.postCrearNuevoUsuarioSTEAM);
+router.post('/agregarUsuarioSTEAM', usuarioSTEAMController.postRegistroUsuarioSTEAM);
 
 
 // Se exporta el router

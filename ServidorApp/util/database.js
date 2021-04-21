@@ -28,6 +28,7 @@ const modelDefiners = [
     require('../models/formulario'),
     require('../models/jugadas'),
     require('../models/partida'),
+    require('../models/usuarioSTEAM')
 
 ]
 //Vincular el objeto de conexion a los modelos

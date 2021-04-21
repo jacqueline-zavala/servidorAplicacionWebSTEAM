@@ -19,7 +19,7 @@ const formularioRoutes = require('./routes/formulario');
 const partidaRoutes = require('./routes/partida');
 
 //Traer las rutas de usuarioSTEAM
-const usuaeioSTEAMRoutes = require('./routes/usuarioSTEAM');
+const usuarioSTEAMRoutes = require('./routes/usuarioSTEAM');
 
 // Traer las rutas de jugadas
 const jugadasRoutes = require('./routes/jugadas');
@@ -63,7 +63,7 @@ app.use('/jugadas', jugadasRoutes);
 let puerto = 8080;
 
 //Corre el servidor
-sequelize.sync()
+sequelize.sync({force: false})
     .then(resultado => {
         console.log('Conexión exitosa');
         //Lanza el servidor para escuchar peticiones

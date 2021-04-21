@@ -4,29 +4,29 @@ const Sequelize = require('sequelize');
 const STEAM = (sequelize)=>{
     sequelize.define('STEAM',{
         correoElectronico:{
-            type: Sequelize.STRING(30),
-            allownull: false,
+            type: Sequelize.STRING(50),
+            allowNull: false,
             primaryKey: true
         },
         contrasena: {
-            type: Sequelize.STRING(50),
-            allownull: false
+            type: Sequelize.STRING(100),
+            allowNull: false
         },
         nombre: {
             type: Sequelize.STRING(50),
-            allownull: true
+            allowNull: false
         },
         apellidoPaterno: {
             type: Sequelize.STRING(50),
-            allownull: false
-        },
-        apellidoPaterno: {
-            type: Sequelize.STRING(50),
-            allownull: false
+            allowNull: false
         },
         apellidoMaterno: {
             type: Sequelize.STRING(50),
-            allownull: false
+            allowNull: false
+        }, 
+        puesto: {
+            type: Sequelize.STRING(50),
+            allowNull: false
         }
     })
 }

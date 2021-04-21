@@ -4,14 +4,15 @@ const STEAM = require('../util/database').models.STEAM;
 const { encrypt, decrypt } = require('../util/crypto');
 
 exports.postRegistroUsuarioSTEAM = (req, res) => {
-    var hashedPassword = encrypt(req.body.password);
+    var hashedPassword = encrypt(req.body.contrasena);
     var pass = hashedPassword.iv+ '|' + hashedPassword.content
     STEAM.create({
         correoElectronico: req.body.correoElectronico,
         contrasena: pass,
         nombre: req.body.nombre,
         apellidoPaterno: req.body.apellidoPaterno,
-        apellidoMaterno: req.body.apellidoMaterno
+        apellidoMaterno: req.body.apellidoMaterno,
+        puesto: req.body.puesto
     }).then(resultado=>{
         res.send("success")
     }).catch(error=>{
