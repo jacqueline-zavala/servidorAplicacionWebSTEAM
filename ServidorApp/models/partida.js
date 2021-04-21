@@ -11,15 +11,18 @@ const Partida = (sequelize) => {
         },
         puntuacionAcumulada: {
             type: Sequelize.INTEGER,
-            allownull: true
+            allownull: true,
+            defaultValue: 0
         },
         vidas: {
             type: Sequelize.INTEGER,
-            allownull: false
+            allownull: false,
+            defaultValue: 3
         },
         estatus: {
             type: Sequelize.STRING(15),
-            allownull: false
+            allownull: false,
+            defaultValue: "En progreso"
         },
         fechaInicio: {
             type: Sequelize.DATE,
