@@ -8,7 +8,7 @@ const router = express.Router();
 const PartidaController = require('../controllers/partida');
 
 //Registra un nuevo usuario en la base de datos desde el juego
-router.post('/crearpartida', PartidaController.postCrearNuevaPartida);
+router.post('/crearPartida', PartidaController.postCrearNuevaPartida);
 
 
 // Se exporta el router

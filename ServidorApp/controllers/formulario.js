@@ -3,6 +3,7 @@ const path = require('path');
 
 // Se envía la información del registro a la entidad formulario
 exports.getRegistroFormulario = (req,res)=>{
+    console.log(req.query);
     Formulario.create({
         JugadorUsername: req.query.username,
         carreraInteresInicial: req.query.carreraInteresInicial,

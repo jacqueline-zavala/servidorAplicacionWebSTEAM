@@ -8,7 +8,7 @@ const router = express.Router();
 const jugadasController = require('../controllers/jugadas');
 
 // Crear el registro con la información del usuario en la tabla formulario
-router.post('/agregarJugada',jugadasController.postAgregarJugada);
+router.post('/agregarJugadas',jugadasController.postAgregarJugada);
 
 // Se exporta el router
 module.exports = router;
