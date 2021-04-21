@@ -64,11 +64,14 @@ exports.getRegistros = (req, res) => {
 }
 
 exports.postIniciarSesion = (req,res) => {
-    Jugador.findByPk(req.body.username)
+    var object = JSON.parse(req.body.datosJSON)
+    Jugador.findByPk(object.username)
         .then(jugador => {
-            var hashedPassword = encrypt(req.body.password);
-            var pass = hashedPassword.iv+ '|' + hashedPassword.content
-            if(jugador.username == req.body.username && jugador.password == pass){
+            var jsonDecrypt = {
+                iv: jugador.password.split('|')[0],
+                content: jugador.password.split('|')[1]
+            };
+            if(jugador.username == object.username && decrypt(jsonDecrypt) == object.password){
                 res.send('success');
             }
             else{

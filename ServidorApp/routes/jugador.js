@@ -19,5 +19,8 @@ router.get('/confirmacion', JugadorController.getConfirmacion);
 // Obtiene los registros del jugador para desplegarlos en el tablero
 router.get('/tablero', JugadorController.getRegistros);
 
+// Inicia la sesión de un jugador
+router.post('/iniciarSesion',JugadorController.postIniciarSesion)
+
 // Se exporta el router
 module.exports = router;
