@@ -13,6 +13,8 @@ const jugadorRoutes = require('./routes/jugador');
 const formularioRoutes = require('./routes/formulario');
 
 const partidaRoutes = require('./routes/partida');
+// Traer las rutas de jugadas
+const jugadasRoutes = require('./routes/jugadas');
 
 //Crear el servidor
 const app = express();
@@ -41,6 +43,9 @@ app.use('/jugador', jugadorRoutes);
 app.use('/formulario', formularioRoutes);
 
 app.use('/partida', partidaRoutes);
+
+// Trae las rutas de Jugadas
+app.use('/jugadas', jugadasRoutes);
 
 //puerto
 let puerto = 8080;

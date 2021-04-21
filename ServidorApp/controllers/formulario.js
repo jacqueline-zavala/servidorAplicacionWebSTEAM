@@ -10,7 +10,7 @@ exports.getRegistroFormulario = (req,res)=>{
         sabesSTEAM: req.query.sabesSTEAM,
         estudiarIngenieria: req.query.estudiarIngenieria,
     }).then(resultado=>{
-        res.send(resultado.dataValues.idFormulario);
+        //res.send(resultado.dataValues.idFormulario);
         res.redirect("/jugador/confirmacion?username=" + req.query.username);
     }).catch(error=>{
         console.log(error);

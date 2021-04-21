@@ -3,10 +3,15 @@ const Sequelize = require('sequelize');
 // Definir el modelo de la entidad Jugadas
 const Jugadas = (sequelize)=>{
     sequelize.define('Jugadas',{
+        idJugadas:{
+            type: Sequelize.INTEGER,
+            allownull: false,
+            primaryKey: true,
+            autoIncrement:true,
+        },
         minijuego:{
             type: Sequelize.STRING(30),
-            allownull: false,
-            primaryKey: true
+            allownull: false
         },
         fechaInicio: {
             type: Sequelize.DATE,
