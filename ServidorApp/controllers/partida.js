@@ -12,7 +12,7 @@ exports.postCrearNuevaPartida = (req, res) => {
         inventario: object.inventario,
         JugadorUsername: object.JugadorUsername
     }).then(resultado => {
-        res.send("Registro Exitoso")
+        res.send({ idPartida: resultado.dataValues.idPartida }) //Enviar de regreso al juego la idPartida
         console.log(resultado)
             //resultado.dataValues.idPartida
     }).catch(error => {
