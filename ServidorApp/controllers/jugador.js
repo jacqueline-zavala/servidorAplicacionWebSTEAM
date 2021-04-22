@@ -1,7 +1,9 @@
 const path = require('path');
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
+const sequelize = require('../util/database');
 const Jugador = require('../util/database').models.Jugador;
 const { encrypt, decrypt } = require('../util/crypto');
+
 //Registra el jugador desde un JSON
 exports.postRegistroJugador = (req,res)=>{
     var object = req.body
@@ -72,18 +74,27 @@ exports.postIniciarSesion = (req,res) => {
                 iv: jugador.password.split('|')[0],
                 content: jugador.password.split('|')[1]
             };
+            // "select TOP 1 * from partida Where JugadorUsername = "+ object.username + " order by idPartida DESC"
             if(jugador.username == object.username && decrypt(jsonDecrypt) == object.password){
-                sequelize.query("select TOP 1 * from partida Where JugadorUsername = "+ object.username + "order by idPartida DESC",{
+                sequelize.query("select TOP 1 * from partida Where JugadorUsername = '"+ object.username + "' AND estatus = 'En progreso' order by idPartida DESC",{
                     type: Sequelize.QueryTypes.SELECT
                 }).then(ultimaPartida => {
-                    console.log(ultimaPartida)
-                    //Si ya tiene una partida manda el ID de la útima partida
-                    var datosUsuario = {
-                        username: jugador.username,
-                        correo: jugador.correo,
-                        idPartida: ultimaPartida.idPartida
+                    if(ultimaPartida.length > 0)
+                    {
+                        var partida = ultimaPartida[0];
+                        //Si ya tiene una partida manda el ID de la útima partida
+                        var datosUsuario = {
+                            username: jugador.username,
+                            correo: jugador.correo,
+                            idPartida: partida.idPartida
+                        }
+                        res.send(datosUsuario);
                     }
-                    res.send(JSON.parse(datosUsuario));
+                    else
+                    {
+                        res.redirect('/partida/agregarPartida?username='+ jugador.username + '&correo=' + jugador.correo);
+                    }
+
                 }).catch(err=>{
                     //Si no tiene, manda un 0 que indique que no tiene partidas.
                     var datosUsuario = {
@@ -115,6 +126,7 @@ exports.postEditarPerfil = (req,res) => {
     }).then(resultado=>{
         res.send("success");
     }).catch(error=>{
+        console.log(error);
         res.send("error");
     })
 };
