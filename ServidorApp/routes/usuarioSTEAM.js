@@ -10,6 +10,17 @@ const usuarioSTEAMController = require('../controllers/usuarioSTEAM');
 //Registra un nuevo usuario en la base de datos desde el juego
 router.post('/agregarUsuarioSTEAM', usuarioSTEAMController.postRegistroUsuarioSTEAM);
 
+//Muestra el html del formulariod e registro
+router.get('/formularioRegistro', usuarioSTEAMController.getFormularioRegistro);
+
+//Página principal
+router.get('/principal', usuarioSTEAMController.getPaginaPrincipal);
+
+//Muestra el formulario de inicio de sesión
+router.get('/iniciarSesion', usuarioSTEAMController.getLogin);
+
+//Redirigir a la página de confirmación
+router.get('/confirmacion', usuarioSTEAMController.getConfirmacion);
 
 // Se exporta el router
 module.exports = router;

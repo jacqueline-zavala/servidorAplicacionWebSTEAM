@@ -34,3 +34,33 @@ exports.postIniciarSesion = (req,res) => {
             }
         })
 }
+
+exports.getPaginaPrincipal = (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '/views', '/principalSTEAM.html'));
+}
+
+exports.getFormularioRegistro = (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '/views', '/registroSTEAM.html'));
+}
+
+exports.getLogin = (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '/views', '/loginSTEAM.html'));
+}
+
+exports.getConfirmacion = (req, res) => {
+    UsuarioSTEAM.findByPk(req.query.correoElectronico)
+    .then(resultado => {
+        var jsonDecrypt = {
+            iv: resultado.contrasena.split('|')[0],
+            content: resultado.contrasena.split('|')[1]
+        };
+        res.render('confirmacion.html', {
+            correoElectronico: resultado.dataValues.correoElectronico,
+            contrasena: decrypt(jsonDecrypt), //resultado.dataValues.password,
+            nombre: resultado.dataValues.nombre,
+            apellidoPaterno: resultado.dataValues.apellidoPaterno,
+            apellidoMaterno: resultado.dataValues.apellidoMaterno,
+            puesto: resultado.dataValues.puesto
+        })
+    });
+}

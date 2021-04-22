@@ -118,3 +118,6 @@ exports.postEditarPerfil = (req,res) => {
         res.send("error");
     })
 };
+exports.getPaginaPrincipal = (req, res) => {
+    res.sendFile(path.join(__dirname,'..','views','principal.html'));
+}
