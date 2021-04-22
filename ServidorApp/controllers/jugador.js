@@ -1,4 +1,5 @@
 const path = require('path');
+const Sequelize = require('sequelize')
 const Jugador = require('../util/database').models.Jugador;
 const { encrypt, decrypt } = require('../util/crypto');
 //Registra el jugador desde un JSON
@@ -72,10 +73,48 @@ exports.postIniciarSesion = (req,res) => {
                 content: jugador.password.split('|')[1]
             };
             if(jugador.username == object.username && decrypt(jsonDecrypt) == object.password){
-                res.send('success');
+                sequelize.query("select TOP 1 * from partida Where JugadorUsername = "+ object.username + "order by idPartida DESC",{
+                    type: Sequelize.QueryTypes.SELECT
+                }).then(ultimaPartida => {
+                    console.log(ultimaPartida)
+                    //Si ya tiene una partida manda el ID de la útima partida
+                    var datosUsuario = {
+                        username: jugador.username,
+                        correo: jugador.correo,
+                        idPartida: ultimaPartida.idPartida
+                    }
+                    res.send(JSON.parse(datosUsuario));
+                }).catch(err=>{
+                    //Si no tiene, manda un 0 que indique que no tiene partidas.
+                    var datosUsuario = {
+                        username: jugador.username,
+                        correo: jugador.correo,
+                        idPartida: 0
+                    }
+                    res.send(JSON.parse(datosUsuario));
+                })
             }
             else{
                 res.send('failed');
             }
         })
 }
+
+//Modifica los datos del Jugador especificado;
+exports.postEditarPerfil = (req,res) => {
+    var object = JSON.parse(req.body.datosJSON);
+    var hashedPassword = encrypt(object.password);
+    var pass = hashedPassword.iv+ '|' + hashedPassword.content
+    Jugador.update({
+        password: pass,
+        correo: object.correo
+        },{
+        where: {
+            username: object.username
+        }
+    }).then(resultado=>{
+        res.send("success");
+    }).catch(error=>{
+        res.send("error");
+    })
+};
