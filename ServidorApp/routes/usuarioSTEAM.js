@@ -19,6 +19,9 @@ router.get('/principal', usuarioSTEAMController.getPaginaPrincipal);
 //Muestra el formulario de inicio de sesión
 router.get('/iniciarSesion', usuarioSTEAMController.getLogin);
 
+//inicio de sesión
+router.post('/postIniciarSesion', usuarioSTEAMController.postIniciarSesion);
+
 //Redirigir a la página de confirmación
 router.get('/confirmacion', usuarioSTEAMController.getConfirmacion);
 
