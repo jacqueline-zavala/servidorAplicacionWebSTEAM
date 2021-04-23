@@ -40,10 +40,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
-//Configurar visualización de plantills
-// app.engine('html', require('ejs').renderFile);
-// app.set('view engine','ejs');
-
 //Trae las rutas de Jugador
 app.use('/jugador', jugadorRoutes);
 

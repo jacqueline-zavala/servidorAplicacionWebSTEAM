@@ -88,9 +88,16 @@
                     <div class="row">
                         <!--Interéses de carrera-->
                         <div class="col">
-                            <div class="form-group">
-                                <label><i>¿Qué quieres ser de grande? *</i></label>
-                                <input type="text" class="form-control" placeholder="Médico, Abogado, Veterinario..." id="carreraInteresInicialFormulario" name ="carreraInteresInicial" required>
+                            <div class="form-select">
+                                <label><i>¿Qué quieres estudiar cuando seas grande? *</i></label>
+                                <br/>
+                                <select id="carreraInteresInicialFormulario" name="carreraInteresInicial">
+                                    <option value="Ingenieria">Una ingeniería</option>
+                                    <option value="FisicoMatematicas">Algo de física o matemáticas</option>
+                                    <option value="Salud">Algo relacionado con la salud</option>
+                                    <option value="CienciasSociales">Algo relacionado con los problemas sociales</option>
+                                    <option value="Arte">Quiero hacer arte</option>
+                                </select>
                             </div>
                         </div>
                         
@@ -109,12 +116,18 @@
                     <!--Aquí cierra la tercera fila del formulario-->
                     
                     <!--Aquí inicia la cuarta fila del formulario-->
+                    <br/>
                     <div class="row">
                         <!--Carreras STEAM-->
                         <div class="col-sm">
                             <div class="form-group">
-                                <label><i>¿Sabes qué es una carrera STEAM? Descríbela: *</i></label>
-                                <input type="text" class="form-control" placeholder="Una carrera STEAM es...." id="sabesSTEAMFormulario" name="sabesSTEAM" required>
+                                <label><i>¿Sabes qué es una carrera STEAM?</i></label>
+                                <br/>
+                                <select id="sabesSTEAMFormulario" name="sabesSTEAM">
+                                    <option value="1">Sí, sé que es una carrera STEAM.</option>
+                                    <option value="0">No, no tengo idea de lo que es.</option>
+                                    <option value="2">No estoy muy seguro de saberlo o tengo una ligera idea</option>
+                                </select>
                             </div>
                         </div>
                         
