@@ -14,15 +14,15 @@ const Formulario = (sequelize)=>{
             allowNull: false
         },
         familiarIngeniero:{
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING(2),
             allowNull: false, //cambiar despues de asesoria
         },
         sabesSTEAM:{
-            type: Sequelize.STRING(100),
+            type: Sequelize.STRING(8),
             allowNull: false, //cambiar despues de asesoria
         },
         estudiarIngenieria:{
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING(2),
             allowNull: false,
         },
         minijuegoFavorito:{

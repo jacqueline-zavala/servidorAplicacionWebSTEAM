@@ -55,6 +55,10 @@ exports.getLogin = (req, res) => {
     res.sendFile(path.join(__dirname, '..', '/views', '/loginSTEAM.html'));
 }
 
+exports.getTablero = (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '/views', '/tableu.html'));
+}
+
 exports.getConfirmacion = (req, res) => {
     STEAM.findByPk(req.query.correoElectronico)
     .then(resultado => {

@@ -25,5 +25,8 @@ router.post('/postIniciarSesion', usuarioSTEAMController.postIniciarSesion);
 //Redirigir a la página de confirmación
 router.get('/confirmacion', usuarioSTEAMController.getConfirmacion);
 
+//Redirigir a tablero de datos
+router.get('/tablero',usuarioSTEAMController.getTablero);
+
 // Se exporta el router
 module.exports = router;
