@@ -133,3 +133,7 @@ exports.postEditarPerfil = (req,res) => {
 exports.getPaginaPrincipal = (req, res) => {
     res.sendFile(path.join(__dirname,'..','views','principal.html'));
 }
+
+exports.getDescargarJuego = (req, res) =>{
+    res.download(path.join(__dirname,'..','public','resources','installer.msi'));
+}

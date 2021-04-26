@@ -33,7 +33,7 @@ exports.postIniciarSesion = (req,res) => {
                 content: usuario.dataValues.contrasena.split('|')[1]
             };
             if(usuario.username == req.body.username && decrypt(jsonDecrypt) == req.body.contrasena){
-                res.redirect("principal")
+                res.redirect("tablero")
             }
             else{
                 res.send('Contraseña incorrecta');

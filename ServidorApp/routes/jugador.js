@@ -28,5 +28,8 @@ router.post('/editarPerfil', JugadorController.postEditarPerfil)
 //Página principal
 router.get('/principal', JugadorController.getPaginaPrincipal);
 
+// Descargar juego
+router.get('/descargarJuego', JugadorController.getDescargarJuego);
+
 //Se exporta el router
 module.exports = router;
