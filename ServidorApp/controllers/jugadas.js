@@ -4,7 +4,8 @@ const path = require('path');
 
 // Se registra una nueva jugada
 exports.postAgregarJugada = (req,res) => {
-    Jugadas.create(req.body)
+    var object = JSON.parse(req.body.datosJSON);
+    Jugadas.create(object)
         .then(resultado =>{
             res.send("success")
         }).catch(error=>{

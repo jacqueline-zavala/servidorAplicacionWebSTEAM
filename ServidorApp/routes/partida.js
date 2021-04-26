@@ -13,5 +13,11 @@ router.post('/agregarPartida', PartidaController.postCrearNuevaPartida);
 // Registra una nueva partida 
 router.get('/agregarPartida', PartidaController.getCrearNuevaPartida);
 
+// Guarda la partida en curso
+router.post('/guardarPartida', PartidaController.postGuardarPartida);
+
+// Finaliza la partida
+router.post('/finalizarPartida', PartidaController.postFinalizarPartida);
+
 // Se exporta el router
 module.exports = router;

@@ -16,7 +16,6 @@ const Jugadas = (sequelize)=>{
         fechaInicio: {
             type: Sequelize.DATE,
             allownull: false,
-            defaultValue: Sequelize.fn('GETDATE')
         },
         fechaFinal: {
             type: Sequelize.DATE,
