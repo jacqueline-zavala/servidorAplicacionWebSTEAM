@@ -9,7 +9,7 @@ const Jugador = (sequelize)=>{
             primaryKey: true
         },
         password:{
-            type: Sequelize.STRING(50),
+            type: Sequelize.STRING(1000),
             allowNull: false
         },
         genero:{
