@@ -24,14 +24,6 @@ const Formulario = (sequelize)=>{
         estudiarIngenieria:{
             type: Sequelize.STRING(2),
             allowNull: false,
-        },
-        minijuegoFavorito:{
-            type: Sequelize.STRING(30),
-            allowNull: true,
-        },
-        carreraInteresFinal:{
-            type: Sequelize.STRING(30),
-            allowNull: true,
         }
     })
 }
