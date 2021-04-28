@@ -73,12 +73,20 @@
                             <div class="form-select">
                                 <label><i>¿Con qué género te identificas? *</i></label>
                                 <br/>
-                                <select id="generoJugador" name="genero">
-                                    <option value="Masculino">Masculino</option>
-                                    <option value="Femenino">Femenino</option>
-                                    <option value="No Binario">No binario</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
+                                <fieldset>
+                                    <label>
+                                        <input type="radio" name="genero" value="Masculino">    Masculino   
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="genero" value="Femenino">  Femenino   
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="genero" value="No binario">   No binario  
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="genero" value="Otro">     Otro    
+                                    </label>
+                                </fieldset>
                             </div>
                         </div>
                     </div>
@@ -107,10 +115,14 @@
                             <div class="form-select">
                                 <label><i>¿Tus padres o algún familiar cercano es ingeniero? *</i></label>
                                 <br/>
-                                <select id="familiarIngenieroFormulario" name="familiarIngeniero">
-                                    <option value="Sí">Sí</option>
-                                    <option value="No">No</option>
-                                </select>
+                                <fieldset>
+                                    <label>
+                                        <input type="radio" name="familiarIngeniero" value="Si"> Si
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="familiarIngeniero" value="No"> No
+                                    </label>
+                                </fieldset>
                             </div>
                         </div>
                     </div> 
@@ -124,11 +136,19 @@
                             <div class="form-group">
                                 <label><i>¿Sabes qué es una carrera STEAM?</i></label>
                                 <br/>
-                                <select id="sabesSTEAMFormulario" name="sabesSTEAM">
-                                    <option value="Sí">Sí, sé que es una carrera STEAM.</option>
-                                    <option value="No">No, no tengo idea de lo que es.</option>
-                                    <option value="Inseguro">No estoy muy seguro de saberlo o tengo una ligera idea</option>
-                                </select>
+                                <fieldset>
+                                    <label>
+                                        <input type="radio" name="sabesSTEAM" value="Si"> Sí, sé que es una carrera STEAM
+                                    </label>
+                                    <br>
+                                    <label>
+                                        <input type="radio" name="sabesSTEAM" value="No"> No, no tengo idea de lo que es.
+                                    </label>
+                                    <br>
+                                    <label>
+                                        <input type="radio" name="sabesSTEAM" value="Inseguro"> No estoy muy seguro de saberlo o tengo una ligera idea
+                                    </label>
+                                </fieldset>
                             </div>
                         </div>
                         
@@ -137,10 +157,14 @@
                             <div class="form-select">
                                 <label><i>¿Has pensado en estudiar ingeniería? *</i></label>
                                 <br/>
-                                <select id="estudiarIngenieriaFormulario" name="estudiarIngenieria">
-                                    <option value="Sí">Sí</option>
-                                    <option value="No">No</option>
-                                </select>
+                                <fieldset>
+                                    <label>
+                                        <input type="radio" name="estudiarIngenieria" value="Si"> Si
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="estudiarIngenieria" value="No"> No
+                                    </label>
+                                </fieldset>
                             </div>
                         </div>
                     </div>
