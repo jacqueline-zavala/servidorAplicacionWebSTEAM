@@ -1,9 +1,7 @@
 // Se importa el módulo express
 const express = require('express');
-
 // Se declara un objeto de tipo router
 const router = express.Router();
-
 //Trae los controladores del jugador
 const JugadorController = require('../controllers/jugador');
 
