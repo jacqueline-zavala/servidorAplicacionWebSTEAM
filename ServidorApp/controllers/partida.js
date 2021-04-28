@@ -42,8 +42,6 @@ exports.postGuardarPartida = (req,res) => {
         console.log(error);
         res.send(error)
     })
-
-    
 };
 
 //Guarda la partida
@@ -56,15 +54,16 @@ exports.postFinalizarPartida = (req,res) => {
         console.log(error);
         res.send(error)
     })
-    // Partida.update({
-    //     puntuacionAcumulada: object.puntuacionAcumulada,
-    //     vidas: object.vidas,
-    //     inventario: object.inventario,
-    //     fechaFinal: Sequelize.fn('GETDATE'),
-    //     estatus: "Perdido"
-    //     },{
-    //     where: {
-    //         idPartida: object.idPartida
-    //     }
-    // })
+};
+
+//Envia el TOP 10 de mejores puntuaciones
+exports.getMejoresPuntuaciones = (req,res) => {
+    sequelize.query("SELECT TOP (10) JugadorUsername, puntuacionAcumulada FROM Partida")
+    .then(resultado => {
+        console.log(resultado);
+        res.send(resultado);
+    }).catch(error =>{
+        console.log(error);
+        res.send(error)
+    })
 };
