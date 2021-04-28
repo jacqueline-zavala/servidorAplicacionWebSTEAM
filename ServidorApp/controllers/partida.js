@@ -46,9 +46,12 @@ exports.postGuardarPartida = (req,res) => {
 
 //Guarda la partida
 exports.postFinalizarPartida = (req,res) => {
+    console.log("Estoy Finalizando la partida");
     var object = JSON.parse(req.body.datosJSON);
-    sequelize.query("UPDATE Partida SET puntuacionAcumulada=" + object.puntuacionAcumulada + ", vidas= "+object.vidas + ", inventario=" + object.inventario + ", estatus=" + object.estatus +", fechaFinal= GETDATE() WHERE idPartida=(select TOP 1 idPartida from partida Where JugadorUsername = '"+ object.username + "' AND estatus = 'En progreso' order by idPartida DESC)")
+    console.log(object);
+    sequelize.query("UPDATE Partida SET puntuacionAcumulada=" + object.puntuacionAcumulada + ", vidas= "+object.vidas + ", inventario=" + object.inventario + ", estatus='" + object.estatus +"', fechaFinal= GETDATE() WHERE idPartida=(select TOP 1 idPartida from partida Where JugadorUsername = '"+ object.username + "' AND estatus = 'En progreso' order by idPartida DESC)")
     .then(resultado => {
+        console.log(resultado);
         res.send("success");
     }).catch(error =>{
         console.log(error);

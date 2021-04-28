@@ -59,7 +59,7 @@ app.use('/jugadas', jugadasRoutes);
 let puerto = 8080;
 
 //Corre el servidor
-sequelize.sync({force: true})
+sequelize.sync({force: false})
     .then(resultado => {
         console.log('Conexión exitosa');
         //Lanza el servidor para escuchar peticiones
