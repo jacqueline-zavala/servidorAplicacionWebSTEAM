@@ -70,43 +70,48 @@ exports.postIniciarSesion = (req,res) => {
     var object = JSON.parse(req.body.datosJSON)
     Jugador.findByPk(object.username)
         .then(jugador => {
-            var jsonDecrypt = {
-                iv: jugador.password.split('|')[0],
-                content: jugador.password.split('|')[1]
-            };
-            // "select TOP 1 * from partida Where JugadorUsername = "+ object.username + " order by idPartida DESC"
-            if(jugador.username == object.username && decrypt(jsonDecrypt) == object.password){
-                sequelize.query("select TOP 1 * from partida Where JugadorUsername = '"+ object.username + "' AND estatus = 'En progreso' order by idPartida DESC",{
-                    type: Sequelize.QueryTypes.SELECT
-                }).then(ultimaPartida => {
-                    if(ultimaPartida.length > 0)
-                    {
-                        var partida = ultimaPartida[0];
-                        //Si ya tiene una partida manda el ID de la útima partida
+            if(jugador){
+                var jsonDecrypt = {
+                    iv: jugador.password.split('|')[0],
+                    content: jugador.password.split('|')[1]
+                };
+                // "select TOP 1 * from partida Where JugadorUsername = "+ object.username + " order by idPartida DESC"
+                if(jugador.username == object.username && decrypt(jsonDecrypt) == object.password){
+                    sequelize.query("select TOP 1 * from partida Where JugadorUsername = '"+ object.username + "' AND estatus = 'En progreso' order by idPartida DESC",{
+                        type: Sequelize.QueryTypes.SELECT
+                    }).then(ultimaPartida => {
+                        if(ultimaPartida.length > 0)
+                        {
+                            var partida = ultimaPartida[0];
+                            //Si ya tiene una partida manda el ID de la útima partida
+                            var datosUsuario = {
+                                username: jugador.username,
+                                correo: jugador.correo,
+                                idPartida: partida.idPartida
+                            }
+                            res.send(datosUsuario);
+                        }
+                        else
+                        {
+                            res.redirect('/partida/agregarPartida?username='+ jugador.username + '&correo=' + jugador.correo);
+                        }
+
+                    }).catch(err=>{
+                        //Si no tiene, manda un 0 que indique que no tiene partidas.
                         var datosUsuario = {
                             username: jugador.username,
                             correo: jugador.correo,
-                            idPartida: partida.idPartida
+                            idPartida: 0
                         }
-                        res.send(datosUsuario);
-                    }
-                    else
-                    {
-                        res.redirect('/partida/agregarPartida?username='+ jugador.username + '&correo=' + jugador.correo);
-                    }
-
-                }).catch(err=>{
-                    //Si no tiene, manda un 0 que indique que no tiene partidas.
-                    var datosUsuario = {
-                        username: jugador.username,
-                        correo: jugador.correo,
-                        idPartida: 0
-                    }
-                    res.send(JSON.parse(datosUsuario));
-                })
+                        res.send(JSON.parse(datosUsuario));
+                    })
+                }
+                else{
+                    res.send('failed');
+                }
             }
             else{
-                res.send('failed');
+                res.send("failed")
             }
         })
 }
