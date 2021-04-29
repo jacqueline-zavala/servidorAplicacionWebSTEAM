@@ -24,7 +24,8 @@ exports.postRegistroJugador = (req,res)=>{
         })
       .catch(error=>{
           //res.send(error);
-          res.redirect("formularioRegistro")
+          // Aquí va lo del alert
+          res.redirect("formularioRegistro?error=1")
         });
 };
 
@@ -51,7 +52,20 @@ exports.getConfirmacion = (req,res)=>{
 
 // Muestra el formulario de registro
 exports.getFormularioRegistro = (req,res)=>{
-    res.sendFile(path.join(__dirname,'..','views','registro.html'));
+    console.log(req.query);
+    if(req.query == {})
+    {
+        res.render('registro.html', {
+            error: 0
+        });
+    }
+    else
+    {
+        res.render('registro.html', {
+            error: req.query.error
+        });
+    }
+    //res.sendFile(path.join(__dirname,'..','views','registro.html'));
 }
 
 // Seleccionar los registros de la tabla jugador para mostrarlos en el tablero
