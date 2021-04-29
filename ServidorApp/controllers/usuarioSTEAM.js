@@ -23,7 +23,7 @@ exports.postRegistroUsuarioSTEAM = (req, res) => {
             res.redirect("confirmacion?correoElectronico="+resultado.dataValues.correoElectronico)
         }).catch(error=>{
             //Envía el error en caso de que haya sucedido un error
-            res.send("error")
+            res.redirect("formularioRegistro?error=2");
         })
     }else{
         res.redirect("formularioRegistro?error=1");
@@ -47,11 +47,11 @@ exports.postIniciarSesion = (req,res) => {
             }
             else{
                 //si no, envía que la contraseña es incorrecta.
-                res.send('Contraseña incorrecta');
+                res.redirect("iniciarSesion?error=1");
             }
         }).catch(error=>{
             //Envía que el correo no está registrado
-            res.send("Correo no registrado.")
+            res.redirect("iniciarSesion?error=2");
         })
 }
 
