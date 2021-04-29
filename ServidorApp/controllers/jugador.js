@@ -176,5 +176,10 @@ exports.getPaginaPrincipal = (req, res) => {
 
 //Descarga el instalador del juego
 exports.getDescargarJuego = (req, res) =>{
-    res.download(path.join(__dirname,'..','public','resources','installer.msi'));
+    if(req.query.plataforma == "Windows"){
+        res.download(path.join(__dirname,'..','public','resources','IT.msi'));
+    }
+    if(req.query.plataforma == "MacOS"){
+        res.download(path.join(__dirname,'..','public','resources','IT.app'));
+    }
 }
