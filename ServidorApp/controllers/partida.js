@@ -17,9 +17,11 @@ exports.postCrearNuevaPartida = (req, res) => {
 
 // Se crea una nueva partida
 exports.getCrearNuevaPartida = (req, res) => {
+    console.log("Creando Partida")
     Partida.create({
         JugadorUsername: req.query.username
     }).then(resultado => {
+        console.log(resultado)
         var datosUsuario = {
             username: req.query.username,
             correo: req.query.correo,
