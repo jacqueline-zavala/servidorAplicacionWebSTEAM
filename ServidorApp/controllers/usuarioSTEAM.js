@@ -26,12 +26,10 @@ exports.postRegistroUsuarioSTEAM = (req, res) => {
             res.send("error")
         })
     }else{
-        //Crea la alerta de que la contraseña de administrador es errónea
-        res.send("ERROR. CONTRASEÑA DE ADMINISTRADOR INVALIDA.");
+        res.redirect("formularioRegistro?error=1");
     }
     
 };
-
 //Permite iniciar sesión al usuario STEAM
 exports.postIniciarSesion = (req,res) => {
         //encuentra al usuario STEAM con su correo
@@ -64,12 +62,36 @@ exports.getPaginaPrincipal = (req, res) => {
 
 //Muestra el formulario de registro
 exports.getFormularioRegistro = (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '/views', '/registroSTEAM.html'));
+    //res.sendFile(path.join(__dirname, '..', '/views', '/registroSTEAM.html'));
+    if(req.query == {})
+    {
+        res.render('registroSTEAM.html', {
+            error: 0
+        });
+    }
+    else
+    {
+        res.render('registroSTEAM.html', {
+            error: req.query.error
+        });
+    }
 }
 
 //Muestra la página del login
 exports.getLogin = (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '/views', '/loginSTEAM.html'));
+    //res.sendFile(path.join(__dirname, '..', '/views', '/loginSTEAM.html'));
+    if(req.query == {})
+    {
+        res.render('loginSTEAM.html', {
+            error: 0
+        });
+    }
+    else
+    {
+        res.render('loginSTEAM.html', {
+            error: req.query.error
+        });
+    }
 }
 
 //Muestra el tablero
