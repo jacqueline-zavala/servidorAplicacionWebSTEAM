@@ -1,3 +1,9 @@
+/*
+*Servidor web para el proyecto
+*Autores: Erick Hernández Silva, Jacqueline Zavala, Israel Sánchez, 
+*Erick Bustos, David Rodriguez
+*/
+
 //Biblioteca para definir lo que es un JSON
 const bodyParser = require("body-parser");
 

@@ -14,8 +14,6 @@ router.get('/formularioRegistro', JugadorController.getFormularioRegistro);
 //Redirigir a la página de confirmación
 router.get('/confirmacion', JugadorController.getConfirmacion);
 
-//Obtiene los registros del jugador para desplegarlos en el tablero
-router.get('/tablero', JugadorController.getRegistros);
 
 //Inicia la sesión de un jugador
 router.post('/iniciarSesion',JugadorController.postIniciarSesion);

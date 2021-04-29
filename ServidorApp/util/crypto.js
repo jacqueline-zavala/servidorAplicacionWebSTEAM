@@ -1,3 +1,10 @@
+/*
+*Métodos que permiten encriptar cualquier texto usando el algoritmo aes-256-ctr
+*se usa la misma llave privada para todas llamadas al metodo
+*este metodo se usa principalmente para las contraseñas.
+*Autor: Erick Hernández Silva
+*/
+
 //modulo crypto para encriptar
 const crypto = require('crypto');
 //definimos el algoritmo de encriptacion a usar

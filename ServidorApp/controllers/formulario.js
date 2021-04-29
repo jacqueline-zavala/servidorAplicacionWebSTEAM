@@ -1,9 +1,9 @@
 const Formulario = require('../util/database').models.Formulario;
 const path = require('path');
 
-// Se envía la información del registro a la entidad formulario
+//Se crea el registro del formulario con los datos proporcionados por el usuario
 exports.getRegistroFormulario = (req,res)=>{
-    console.log(req.query);
+    //Se crea el registro del formulario
     Formulario.create({
         JugadorUsername: req.query.username,
         carreraInteresInicial: req.query.carreraInteresInicial,
@@ -11,9 +11,10 @@ exports.getRegistroFormulario = (req,res)=>{
         sabesSTEAM: req.query.sabesSTEAM,
         estudiarIngenieria: req.query.estudiarIngenieria,
     }).then(resultado=>{
-        //res.send(resultado.dataValues.idFormulario);
+        //Una vez realizado, se redirige a la página de confirmacion
         res.redirect("/jugador/confirmacion?username=" + req.query.username);
     }).catch(error=>{
-        console.log(error);
+        //En caso de error, se envía el error.
+        res.send(error);
     });
 };
