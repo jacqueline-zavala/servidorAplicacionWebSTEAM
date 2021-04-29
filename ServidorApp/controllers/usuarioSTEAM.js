@@ -20,11 +20,11 @@ exports.postRegistroUsuarioSTEAM = (req, res) => {
             res.send("error")
         })
     }else{
-        res.send("ERROR. CONTRASEÑA DE ADMINISTRADOR INVALIDA.");
+        //       res.send("ERROR. CONTRASEÑA DE ADMINISTRADOR INVALIDA.");
+        res.redirect("formularioRegistro?error=1");
     }
     
 };
-
 exports.postIniciarSesion = (req,res) => {
         STEAM.findByPk(req.body.correoElectronico)
         .then(usuario => {
@@ -36,10 +36,12 @@ exports.postIniciarSesion = (req,res) => {
                 res.redirect("tablero")
             }
             else{
-                res.send('Contraseña incorrecta');
+                //res.send('Contraseña incorrecta');
+                res.redirect("iniciarSesion?error=1")
             }
         }).catch(error=>{
-            res.send("Correo no registrado.")
+            res.redirect("iniciarSesion?error=2")
+            //res.send("Correo no registrado.")
         })
 }
 
@@ -48,11 +50,35 @@ exports.getPaginaPrincipal = (req, res) => {
 }
 
 exports.getFormularioRegistro = (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '/views', '/registroSTEAM.html'));
+    //res.sendFile(path.join(__dirname, '..', '/views', '/registroSTEAM.html'));
+    if(req.query == {})
+    {
+        res.render('registroSTEAM.html', {
+            error: 0
+        });
+    }
+    else
+    {
+        res.render('registroSTEAM.html', {
+            error: req.query.error
+        });
+    }
 }
 
 exports.getLogin = (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '/views', '/loginSTEAM.html'));
+    //res.sendFile(path.join(__dirname, '..', '/views', '/loginSTEAM.html'));
+    if(req.query == {})
+    {
+        res.render('loginSTEAM.html', {
+            error: 0
+        });
+    }
+    else
+    {
+        res.render('loginSTEAM.html', {
+            error: req.query.error
+        });
+    }
 }
 
 exports.getTablero = (req, res) => {

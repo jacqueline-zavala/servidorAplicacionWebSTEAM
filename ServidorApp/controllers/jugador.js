@@ -23,7 +23,7 @@ exports.postRegistroJugador = (req,res)=>{
         res.redirect(url);
         })
       .catch(error=>{
-          //res.send(error);
+          // res.send(error);
           // Aquí va lo del alert
           res.redirect("formularioRegistro?error=1")
         });
