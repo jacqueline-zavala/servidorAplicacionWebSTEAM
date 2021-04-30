@@ -25,7 +25,7 @@ const Jugador = (sequelize)=>{
             allowNull: false,
         },
         correo:{
-            type: Sequelize.STRING(100),
+            type: Sequelize.STRING(150),
             allowNull: false,
             unique: true
         },
