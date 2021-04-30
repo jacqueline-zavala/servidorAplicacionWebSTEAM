@@ -34,5 +34,6 @@
 }
 
 .img_centrada{
+    margin: auto;
     top: 50%;
 }
