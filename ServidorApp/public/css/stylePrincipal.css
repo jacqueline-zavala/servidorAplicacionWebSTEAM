@@ -27,7 +27,17 @@
     font-size: 20px; 
     text-align: justify;
 }
+
 .lista{
     text-align: left;
     font-size: 20px; 
+}
+
+.img_centrada{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
