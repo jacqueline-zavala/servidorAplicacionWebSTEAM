@@ -63,7 +63,7 @@ exports.postFinalizarPartida = (req,res) => {
 //Envia el TOP 10 de mejores puntuaciones
 exports.getMejoresPuntuaciones = (req,res) => {
     //Se realiza el query para obtener el TOP 10 de jugadores con mejores puntuaciones
-    sequelize.query("SELECT TOP 10 JugadorUsername, puntuacionAcumulada FROM Partida WHERE puntuacionAcumulada > 0 AND estatus = 'Finalizado' ORDER BY puntuacionAcumulada DESC")
+    sequelize.query("SELECT TOP 10 JugadorUsername, puntuacionAcumulada FROM Partida WHERE puntuacionAcumulada > 0 AND estatus = 'Finalizada' ORDER BY puntuacionAcumulada DESC")
     .then(resultado => {
         //Se inicializa una variable top para guardar el top 10
         var top = "";
