@@ -180,6 +180,6 @@ exports.getDescargarJuego = (req, res) =>{
         res.download(path.join(__dirname,'..','public','resources','IT.zip'));
     }
     if(req.query.plataforma == "MacOS"){
-        res.download(path.join(__dirname,'..','public','resources','IT.app'));
+        res.download(path.join(__dirname,'..','public','resources','IT_App.zip'));
     }
 }
