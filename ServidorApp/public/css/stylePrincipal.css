@@ -31,3 +31,9 @@
     text-align: left;
     font-size: 20px; 
 }
+
+.redondeado_imagen{
+    padding-top: 5px;
+    width: 640;
+    height: 249;
+}
