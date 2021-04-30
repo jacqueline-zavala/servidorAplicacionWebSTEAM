@@ -177,7 +177,7 @@ exports.getPaginaPrincipal = (req, res) => {
 //Descarga el instalador del juego
 exports.getDescargarJuego = (req, res) =>{
     if(req.query.plataforma == "Windows"){
-        res.download(path.join(__dirname,'..','public','resources','IT.msi'));
+        res.download(path.join(__dirname,'..','public','resources','IT LLama a Casa Demo.zip'));
     }
     if(req.query.plataforma == "MacOS"){
         res.download(path.join(__dirname,'..','public','resources','IT.app'));
